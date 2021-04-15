@@ -12,18 +12,18 @@
   </head>
   <body>
     <header class="bg-danger bg-gradient text-warning text-center container-fluid">
-        <div = class="row">
-            <div class="col-12 col-md-6 col-lg-12 ">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 ">
                 <img src="Imagenes/pokemon_logo_PNG12.png" class="img-fluid" alt="" >
 
             </div>
-            <div class="col-12 col-md-6 col-lg-12 pb-4">
+            <div class="col-12 col-md-6 col-lg-6 pt-5">
 
-                <h2>Sistema de Gestor de Pokemos</h2>
+                <h2>Sistema de Gestor de Pokemons</h2>
 
             </div>
-            <div class="col col-md col-lg">
-                <img src="imagenes/Ashh.png" alt="" class="img-fluid">
+            <div class="col col-md col-lg-3">
+                <img src="imagenes/pokemon_logo_PNG12.png" alt="" class="img-fluid" id="Imagen Ash">
             </div>
 
 
@@ -39,9 +39,48 @@
                         <span class="card-title">Registrar Tu pokemon :D</span>
                     </div>
                     <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label" for="nombre_txt:">Nombre </label>
+                            <input class="form-control" type="text" id="nombre_txt">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="descripcion-txt">Descripcion del pokemon</label>
+                            <input class="form-control" type="text" id="descripcion-txt">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="legendario-rb">Legendario</label>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="legendario-rb" id="legendario-si" class="form-check-input">
+                                <label for="legendario-si" class="form-check-label">SI</label>
+                            </div>
 
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="legendario-rb" id="legendario-no" class="form-check-input">
+
+                                <label for="legendario-no" class="form-check-label">NO</label>
+                            </div>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo-select" class="form-label">Seleccione el tipo de Pokemon</label>
+                            <select id="" class="form-select">
+                                <option value="Agua">Agua</option>
+                                <option value="Fuego">Fuego</option>
+                                <option value="Planta">Planta</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Rayo">Rayo</option>
+
+                            </select>
+                        </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer row">
+                        
+                        <div class="col-6">
+                            <button type="button" class="btn btn-success" id="registrar-btn">Registrar</button>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn btn-info" id="limpiar-btn">Limpiar</button>
+                        </div>
 
                     </div>
 
@@ -55,6 +94,37 @@
 
                     </div>
                     <div class="card-body">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>NRO</th>
+                                    <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>Descripcion</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Bulbasur</td>
+                                    <td>Planta</td>
+                                    <td>Pokemos tipo agua</td>
+                                    <td>Eliminar</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Charmander</td>
+                                    <td>Fuegoa</td>
+                                    <td>Pokemos tipo Fuego</td>
+                                    <td>Eliminar</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
 
                     </div>
                     <div class="card-footer">
@@ -71,12 +141,12 @@
     </main>
 
 
-  </body>
+  
 
       
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
+    <script src="js/index.js"></script>
 
   </body>
 </html>
