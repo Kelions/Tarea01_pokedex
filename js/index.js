@@ -17,6 +17,24 @@ tinymce.init({
   
 //Code
 
+const eliminarPokemon = async function (){
+  let res = await Swal.fire({
+    title:`desea enviar el Pokemon ${pokemones[this.nro].nombre}`,
+    showCancelButton: true,
+    confirmButtonText: "Si, Enviar" 
+  });
+  
+  if(res.isConfirmed){
+    pokemones.splice(this.nro,1);
+    cargarTable();
+    Swal.fire("Pokemon Enviado al profesor");
+  } else{
+    Swal.fire("canelado")
+  }
+  
+}
+
+
 const pokemones = [];
 const cargarTable = ()=>{
   //1. obtener una referencia a la tabla
@@ -33,7 +51,11 @@ const cargarTable = ()=>{
       tdNro.innerText = (i+1)
 
       let tdNombre = document.createElement("td");
-      tdNombre.innerText = (p.nombre)
+      tdNombre.innerText = p.nombre;
+      if (p.legendario){
+        tdNombre.classList.add("text-warning");
+      }
+
 
       let tdTipo = document.createElement("td");
       
@@ -64,7 +86,13 @@ const cargarTable = ()=>{
       tdDesc.innerHTML = (p.descripcion)
 
       let tdAcciones = document.createElement('td');
-      
+      //Agregar boton 
+      let boton = document.createElement("button");//crear elemento
+      boton.classList.add("btn","btn-danger")//cambiar clases de los elementos
+      boton.innerText = "Enviar al profesor"//cambiar texto de unn elemento
+      boton.nro = i;
+      boton.addEventListener("click",eliminarPokemon)
+      tdAcciones.appendChild(boton)//agregar un elemnto dentro de otro
       
 
     //5. agregar las celdas al tr
@@ -81,7 +109,7 @@ const cargarTable = ()=>{
 
 document.querySelector("#registrar-btn").addEventListener("click", ()=>{
     // Value es para obtener el valor de loos input de texto
-    let nombre = document.querySelector("#nombre_txt").value;
+    let nombre = document.querySelector("#nombre-txt").value;
     // Esto lo saque de la pagina del tinymce, es para obtener lo escrito, obtener valor
     let descripcion = tinymce.get("descripcion_txt").getContent();
     //checked indica si el dariobutton esta seleccionado
@@ -103,3 +131,15 @@ document.querySelector("#registrar-btn").addEventListener("click", ()=>{
     Swal.fire("Exito!","Pokemon Registrado", "success")
   
 } );
+
+//Limpiar
+document.querySelector("#limpiar-btn").addEventListener("click",()=>{
+  document.querySelector("#nombre-txt").value = "";
+  //document.querySelector("#descripcion-txt").value = ""; no funciona
+  tinymce.get("descripcion_txt").setContent("");
+  document.querySelector("#legendario-no").checked = true;
+  document.querySelector("#tipo-select").value = "planta";
+
+})
+
+
